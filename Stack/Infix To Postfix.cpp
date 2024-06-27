@@ -120,7 +120,7 @@ void InToPost(char *s, char *t)
     {
         *t=pop(&top);t++;*t=' ';t++;
     }
-   // if(peek(top)=='('){cout<<"\n Error"<<endl;}
+    if(peek(top)=='('){cout<<"\n Error"<<endl;}
     *t='\0';
 }
 
