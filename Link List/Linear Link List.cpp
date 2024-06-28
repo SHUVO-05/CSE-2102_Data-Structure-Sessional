@@ -1,3 +1,4 @@
+// Linear Linked List Implementation.
 #include<iostream>
 using namespace std;
 struct Node
