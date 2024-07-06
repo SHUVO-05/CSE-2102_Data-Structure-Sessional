@@ -44,7 +44,7 @@ void Enqueue(queue *pq, int value)
 //    }
 //    pq->elements[pq->rear]=value;
 //}
-int dequeue(queue *pq)
+int Dequeue(queue *pq)
 {
     int temp;
     temp=pq->elements[pq->front];
@@ -105,7 +105,7 @@ int main()
                  c=getch();
             }
             else{
-                cout<<"Value Deueue is "<<dequeue(&q)<<endl;
+                cout<<"Value Deueue is "<<Dequeue(&q)<<endl;
                 cout<<" Press any key to continue...."<<endl;
                  c=getch();
             }break;
