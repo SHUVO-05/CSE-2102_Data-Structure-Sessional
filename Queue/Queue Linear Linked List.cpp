@@ -26,7 +26,7 @@ void Enqueue(Queue *pq, int item)
     }
     point->info=item;
     point->next=NULL;
-    if((point->rear)==0)
+    if((point->rear)==NULL)
 {
        cout<<pq->rear<<endl;
        (pq->front)=point;
