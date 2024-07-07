@@ -1,7 +1,7 @@
 // Factorial using Recursive.
 #include<iostream>
 using namespace std;
-long double factorial(long double n)
+long double factorial(int n)
 {
     if(n==0) return 1;
     return n*factorial(n-1);
@@ -9,7 +9,7 @@ long double factorial(long double n)
 int main()
 {
 
-    long double number;
+    int number;
     while(1){
             cout<<"Enter integer number:";
     cin>>number;

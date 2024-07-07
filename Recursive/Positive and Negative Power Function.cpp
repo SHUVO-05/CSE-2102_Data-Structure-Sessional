@@ -33,6 +33,6 @@ int main()
             cout<<"Enter integer number and power value: ";
     cin>>number>>pr;
 
-    cout<<"\n Factorial is: "<<power(number,pr)<<endl;}
+    cout<<"\n Result is: "<<power(number,pr)<<endl;}
 }
 
