@@ -10,7 +10,7 @@ void Print_A(int aray[],int len)
 }
 void Binary_search(int ar[],int len,int item)
 {
-   int lb=0,ub=len,i,mid=(lb+ub)/2;
+   int lb=0,ub=len-1,i,mid=(lb+ub)/2;
    while(lb<=ub&&ar[mid]!=item)
    {
        if(item<ar[mid])
@@ -19,7 +19,7 @@ void Binary_search(int ar[],int len,int item)
         lb=mid+1;
         mid=(lb+ub)/2;
    }
-   if(ar[mid]==item)cout<<"Item is found: "<<endl;
+   if(ar[mid]==item)cout<<"Item "<<item<<" is found: "<<" at position "<<mid+1<<endl;
    else cout<<"Not found item"<<endl;
 }
 int main()
