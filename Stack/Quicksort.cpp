@@ -53,7 +53,7 @@ void reduction(int a[],int beg,int end, int *loc)
     right=end;
     while(!done)
     {
-        while((a[*loc]<a[right])&&(*loc!=right))
+        while((a[*loc]<=a[right])&&(*loc!=right))
             right--;
         if(*loc==right) done=true;
         else{
@@ -64,7 +64,7 @@ void reduction(int a[],int beg,int end, int *loc)
         }
     if(!done)
     {
-        while((a[*loc]>a[left])&&(*loc!=left))
+        while((a[*loc]>=a[left])&&(*loc!=left))
             left++;
         if(*loc==left)done=true;
         else
@@ -99,16 +99,6 @@ void QuickSortIterative(int a[],int n)
         }
     }
 
-}
-void quickSrotRecursive(int a[],int lb, int ub)
-{
-    int loc;
-    if(lb<ub)
-    {
-        reduction(a,lb,ub,&loc);
-        quickSrotRecursive(a,lb,loc-1);
-        quickSrotRecursive(a,loc+1,ub);
-    }
 }
 int main()
 {
