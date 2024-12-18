@@ -1,32 +1,29 @@
-
-//Bubble sort
+//Bubble Sort.
 #include<iostream>
 using namespace std;
-void Print_A(int aray[],int len)
+void print(int ar[], int siz)
 {
-
-    for(int i=0;i<len;i++)
-        cout<<aray[i]<<' ';
-    cout<<endl;
+    for(int i=0;i<siz;i++)
+        cout<<ar[i]<<' ';
+        cout<<endl;
 }
-
-void swap_v(int &a, int &b)
+void swap(int &a, int &b)
 {
-    int tmp=a;
+    int temp=a;
     a=b;
-    b=tmp;
+    b=temp;
 }
-void Bubble_sort(int ar[], int len)
+void bubble_sort(int array[], int siz)
 {
     int i,j,flag;
-    for(i=0;i<len-1;i++)
-       {
-            flag=0;
-        for(j=0;j<len-i-1;j++)
+    for(i=0; i<siz-1; i++)
+    {
+        flag=0;
+        for(j=1; j<siz-i; j++)
         {
-        if(ar[j]>ar[j+1])
-            {swap_v(ar[j],ar[j+1]);
-            flag=1;
+            if(array[j-1]>array[j])
+            {   swap(array[j-1],array[j]);
+                flag=1;
             }
 
         }
@@ -35,12 +32,8 @@ void Bubble_sort(int ar[], int len)
 }
 int main()
 {
-
-    int ar[8]={33,51,27,85,66,23,13,57};
-     cout<<"Unsorted Array : ";
-    Print_A(ar,8);
-     cout<<"Your sorted Array : ";
-    Bubble_sort(ar,8);
-    Print_A(ar,8);
-   return 0;
+    int Array[7]={56,0,5,0,3,9,1};
+    print(Array,7);
+    bubble_sort(Array,7);
+    print(Array,7);
 }

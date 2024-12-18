@@ -1,48 +1,41 @@
-// Inserting a Linear array
+//Insert Linear Array.
 #include<iostream>
 using namespace std;
-void Print_A(int aray[],int len)
+void print(int ar[], int siz)
 {
-    cout<<"Array is: ";
-    for(int i=0;i<len;i++)
-        cout<<aray[i]<<' ';
-    cout<<endl;
+    for(int i=0;i<siz;i++)
+        cout<<ar[i]<<' ';
+        cout<<endl;
 }
-
-void Scan_A(int aray[],int len)
-{
-    for(int i=0;i<len;i++)
-    {
-    cout<<"Enter your "<<i+1<<"th element: ";
-        cin>>aray[i];
-
-    }
-}
-void insert_A(int ar[], int &siz,int position,int item)
-{
-
-    int j=siz;
-    if(position>(j+1)){cout<<"Position Invalid"<<endl; exit(1);}
-    while(j>=position)
-    {
+void insert_array_given_position(int *ar,int *siz, int item, int k)
+{   int j;
+    j=*siz-1;
+    while(j>=k) {
         ar[j+1]=ar[j];
         j--;
     }
-    ar[position]=item;
-    siz++;
+    ar[k]=item;
+    (*siz)++;
+}
+
+void insert_sorted_array(int *ar, int *siz, int item)
+{
+    int k;
+    k=*siz-1;
+    while((item<ar[k])&&(k>=0))
+    {   ar[k+1]=ar[k];
+        k--;
+    }
+    ar[k+1]=item;
+    (*siz)++;
+
 }
 int main()
 {
-
-    int siz,item,position;
-    cout<<"Enter array size: ";
-   cin>>siz;
-    int ar[siz];
-    Scan_A(ar,siz);
-    Print_A(ar,siz);
-    cout<<"Enter item & position which position you insert: ";
-    cin>>item>>position;
-    insert_A(ar,siz,position,item);
-    Print_A(ar,siz);
-   return 0;
+    int item,pos,array[8]= {321,150,235,65,573,5,789,1278};
+    int siz=sizeof(array)/sizeof(array[0]);
+    print(array,siz);
+    cout<<" Enter your Item & Position your want to insert: ";
+    cin>>item>>pos;
+    insert_array_given_position(array,&siz,item,pos);
 }

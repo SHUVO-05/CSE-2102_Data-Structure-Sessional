@@ -26,57 +26,6 @@ void swap(int &a, int &b)
     a=b;
     b=temp;
 }
-void subArray(int ar[], int lb, int lr,int rb, int rr)
-{
-    int na=lb, nb=rb, nc=lb, k, c[MAX];
-    while((na<=lr)&&(nb<=rr))
-    {   if(ar[na]<ar[nb])c[nc++]=ar[na++];
-        else c[nc++]=ar[nb++];
-    }
-    if(na>lr) {
-        while(nb<=rr)c[nc++]=ar[nb++];
-    }
-    else {
-        while(na<=lr)c[nc++]=ar[na++];
-    }
-    for(k=lb; k<=rr; k++)
-        ar[k]=c[k];
-
-}
-
-void merge_sort(int ar[], int st, int ed)
-{
-    int mid;
-    if(st<ed)
-    {   mid=(st+ed)/2;
-        merge_sort(ar,st,mid);
-        merge_sort(ar,mid+1,ed);
-        subArray(ar,st,mid,mid+1,ed);
-    }
-//    print(ar,7);
-}
-void small_value(int ar[], int n, int k, int *loc)
-{
-    int small, j;
-    small=ar[k-1];
-    *loc=k-1;
-    for(j=k; j<n; j++)
-    {
-        if(ar[j]<small)
-        {   small=ar[j];
-            *loc=j;
-        }
-    }
-}
-void selection_sort(int ar[], int siz)
-{
-    int loc, i;
-    for(i=1; i<siz; i++)
-    {
-        small_value(ar,siz,i,&loc);
-        swap(ar[i-1],ar[loc]);
-    }
-}
 void bubble_sort(int array[], int siz)
 {
     int i,j,flag;
@@ -108,6 +57,57 @@ void insertion_sort(int ar[], int siz)
         }
         ar[j+1]=temp;
     }
+}
+void small_value(int ar[], int n, int k, int *loc)
+{
+    int small, j;
+    small=ar[k-1];
+    *loc=k-1;
+    for(j=k; j<n; j++)
+    {
+        if(ar[j]<small)
+        {   small=ar[j];
+            *loc=j;
+        }
+    }
+}
+void selection_sort(int ar[], int siz)
+{
+    int loc, i;
+    for(i=1; i<siz; i++)
+    {
+        small_value(ar,siz,i,&loc);
+        swap(ar[i-1],ar[loc]);
+    }
+}
+void subArray(int ar[], int lb, int lr,int rb, int rr)
+{
+    int na=lb, nb=rb, nc=lb, k, c[MAX];
+    while((na<=lr)&&(nb<=rr))
+    {   if(ar[na]<ar[nb])c[nc++]=ar[na++];
+        else c[nc++]=ar[nb++];
+    }
+    if(na>lr) {
+        while(nb<=rr)c[nc++]=ar[nb++];
+    }
+    else {
+        while(na<=lr)c[nc++]=ar[na++];
+    }
+    for(k=lb; k<=rr; k++)
+        ar[k]=c[k];
+
+}
+
+void merge_sort(int ar[], int st, int ed)
+{
+    int mid;
+    if(st<ed)
+    {   mid=(st+ed)/2;
+        merge_sort(ar,st,mid);
+        merge_sort(ar,mid+1,ed);
+        subArray(ar,st,mid,mid+1,ed);
+    }
+//    print(ar,7);
 }
 
 void radix_sort(int ar[], int siz)
@@ -216,7 +216,7 @@ int Binary_search_recursive(int ar[],int lb,int ub,int item)
     }
 
 }
-void insert_array_position(int *ar,int *siz, int item, int k)
+void insert_array_given_position(int *ar,int *siz, int item, int k)
 {   int j;
     j=*siz-1;
     while(j>=k) {
@@ -239,7 +239,7 @@ void insert_sorted_array(int *ar, int *siz, int item)
     (*siz)++;
 
 }
-void delete_from_array_position(int *ar, int *siz, int k)
+void delete_from_array_given_position(int *ar, int *siz, int k)
 {
     int j;
     j=k+1;
@@ -272,7 +272,6 @@ void delete_sorted_array(int *ar, int *siz, int item)
 int main()
 {
     char h;
-
     int pos,item,choice, i, array[]= {321,150,235,65,573,5,789,1278};
     int size=(sizeof(array)/sizeof(array[0]));
     while(1) {
@@ -281,11 +280,11 @@ int main()
         cout<<" 0. Exit. "<<endl;
         cout<<" 1. In_order_Traverse. "<<endl;
         cout<<" 2. Reverse_order_Traverse. "<<endl;
-        cout<<" 3. Boubble_Short. "<<endl;
+        cout<<" 3. Bubble_Short. "<<endl;
         cout<<" 4. Insertion_Sort. "<<endl;
         cout<<" 5. Selection_Sort. "<<endl;
         cout<<" 6. Merge_Sort. "<<endl;
-        cout<<" 7. RAdix_sort. "<<endl;
+        cout<<" 7. Radix_sort. "<<endl;
         cout<<" 8. Quick Sort. "<<endl;
         cout<<" 9. Linear Search. "<<endl;
         cout<<"10. Binary Search(Only use for Sorted Array). "<<endl;
@@ -296,7 +295,7 @@ int main()
         switch(choice)
         {
         case 0:
-            exit(1);
+            return 0;
             break;
         case 1:
             in_order_traverse(array,size);
@@ -365,7 +364,7 @@ int main()
         case 11:
             cout<<" Enter your Item & Position your want to insert: ";
             cin>>item>>pos;
-            insert_array_position(array,&size,item,pos);
+            insert_array_given_position(array,&size,item,pos);
             cout<<" Press any key to continoue... ";
             h=getch();
             h=getch();
@@ -373,7 +372,7 @@ int main()
         case 12:
             cout<<" Enter your position you want to delete: ";
             cin>>pos;
-            delete_from_array_position(array,&size,pos);
+            delete_from_array_given_position(array,&size,pos);
             cout<<" Press any key to continoue... ";
             h=getch();
             h=getch();

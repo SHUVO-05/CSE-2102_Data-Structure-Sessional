@@ -1,23 +1,28 @@
-//Linear Search
+//Linear Search.
 #include<iostream>
 using namespace std;
-void linear_search(int ar[],int len,int item)
+void print(int ar[], int siz)
 {
-   int i,flag;
-   ar[len]=item;
-   while(ar[i]!=item)
-   {
-       i++;
-   }
-   if(i==len)cout<<item<<" is not found "<<endl;
-   else cout<<"Element is found   "<<i+1<<"  position"<<endl;
+    for(int i=0;i<siz;i++)
+        cout<<ar[i]<<' ';
+        cout<<endl;
+}
+void linear_search(int ar[],int siz,int item)
+{
+    int i=0;
+    ar[siz]=item;
+    while(ar[i]!=item)
+    {
+        i++;
+    }
+    if(i==siz)cout<<item<<" is not found "<<endl;
+    else cout<<"Element is found   "<<i+1<<"  position"<<endl;
 }
 int main()
 {
-
-    int item, ar[8]={33,51,27,85,66,23,13,57};
-    cout<<"Enter your item your want to search: ";
+    int item,Array[8]= {321,150,235,65,573,5,789,1278};
+    print(Array,8);
+    cout<<" Type your item you want to search: ";
     cin>>item;
-    linear_search(ar,8,item);
-   return 0;
+    linear_search(Array,8,item);
 }
