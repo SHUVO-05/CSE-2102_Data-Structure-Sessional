@@ -210,9 +210,8 @@ int Binary_search_recursive(int ar[],int lb,int ub,int item)
     else {
         mid=(lb+ub)/2;
         if(item==ar[mid])return mid;
-        else if(item<ar[mid])
-            return Binary_search_recursive(ar,lb,mid-1, item);
-        else Binary_search_recursive(ar,mid+1,ub,item);
+        else if(item<ar[mid]) return Binary_search_recursive(ar,lb,mid-1, item);
+        else return Binary_search_recursive(ar,mid+1,ub,item);
     }
 
 }
